@@ -1,0 +1,38 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.gp-12 {
+    gap: 12px
+}
+
+.card {
+    background-color: cadetblue;
+    padding: 24px;
+}
+
+.input-prop {
+    padding: 8px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+}
