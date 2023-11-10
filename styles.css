@@ -11,8 +11,8 @@ html, body{
     display: flex; 
     flex-direction: column;
     gap: 18px; 
-    margin-top: 
-    10%; 
+    margin-top: 10%; 
+    align-items: center;
 }
 
 .flex {
