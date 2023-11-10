@@ -35,4 +35,71 @@ th, td {
 }
 th {
     background-color: #f2f2f2;
+}html, body{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.cadastro {
+    background-color: #f0f0f0; 
+    height: 100%; 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column;
+    gap: 18px; 
+    margin-top: 10%; 
+    align-items: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.card {
+    background-color: cadetblue;
+    padding: 24px;
+}
+
+.input-prop {
+    padding: 8px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.estoque ul {
+
+
+}
+
+.estoque li {
+    border: 1px solid black;
+    display: inline-block;
+    width: 95%;
+    list-style: none;
+    margin: 1%;
+    text-align: center;
+}
+
+.estoque h3 {
+    display: inline-block;
+    width: 19%;
+    color: rgb(0, 0, 0);
+}
+
+.estoque h4 {
+    display: inline-block;
+    width: 19%;
+    color: rgb(0, 0, 0);
+}
+
+.estoque li:hover {
+    background-color: rgb(137, 138, 146);
 }
