@@ -1,14 +1,22 @@
 html, body{
     margin: 0;
     height: 100%;
+    width: 100%;
+}
+
+.cadastro {
+    background-color: #f0f0f0; 
+    height: 100%; 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column;
+    gap: 18px; 
+    margin-top: 
+    10%; 
 }
 
 .flex {
     display: flex;
-}
-
-.gp-12 {
-    gap: 12px
 }
 
 .card {
@@ -24,15 +32,37 @@ html, body{
     width: 100%;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
+a {
+    color: white;
+    text-decoration: none;
 }
-th, td {
+
+.estoque ul {
+
+
+}
+
+.estoque li {
     border: 1px solid black;
-    padding: 8px;
+    display: inline-block;
+    width: 95%;
+    list-style: none;
+    margin: 1%;
     text-align: center;
 }
-th {
-    background-color: #f2f2f2;
+
+.estoque h3 {
+    display: inline-block;
+    width: 19%;
+    color: rgb(0, 0, 0);
+}
+
+.estoque h4 {
+    display: inline-block;
+    width: 19%;
+    color: rgb(0, 0, 0);
+}
+
+.estoque li:hover {
+    background-color: rgb(137, 138, 146);
 }
