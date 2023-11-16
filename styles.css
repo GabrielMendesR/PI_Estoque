@@ -24,6 +24,18 @@ div {
     display: flex;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
+.gp-12 {
+    gap: 12px
+}
+
+.pd-12 {
+    padding: 12px;
+}
+
 .card {
     background-color: cadetblue;
     padding: 24px;
