@@ -8,6 +8,7 @@ function addEstoque() {
         modelo: document.getElementById('modelo').value,
     }
 
+    document.getElementById('estoque').append(prod)
     
 }
 
