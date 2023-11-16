@@ -4,7 +4,7 @@ function addEstoque() {
         nome: document.getElementById('nome').value, 
         categoria: document.getElementById('categoria').value, 
         fornecedor: document.getElementById('fornecedor').value, 
-        qnt: 0,
+        quantidade: 0,
         modelo: document.getElementById('modelo').value,
     }
 
