@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-US">
   <head>
-    <link rel="website icon" type="png" href="img/package.png">
+    <link rel="website icon" type="png" href="assets/img/package.png">
     <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -35,20 +35,20 @@
         <h1>Cadastro de Produto</h1>
         
         <div class="flex flex-column gp-12">
-          <div style="display: flex; gap: 12px;" class="w-100"> 
-            <input id="categoria" type="text" placeholder="Categoria" class="input-prop" style="flex: 1">
-            <input id="nome" type="text" placeholder="Nome" class="input-prop" style="flex: 1">
-            <input id="modelo" type="text" placeholder="Modelo" class="input-prop" style="flex: 1">
-          </div>
-          <div style="display: flex; gap: 12px;" class="w-100">
-            <input id="fornecedor" type="text" placeholder="Fornecedor" class="input-prop" style="flex: 1">
-            <input id="preco" type="text" placeholder="Preço" class="input-prop" style="flex: 1">
-          </div>
-          <div class="w-100 mt-32" style="display: flex; justify-content: center;">  
-            <button style="padding: 12px; background-color: rgb(131, 204, 131)"><strong>Confirmar</strong></button>
+            <div style="display: flex; gap: 12px;" class="w-100"> 
+              <input id="nome" type="text" placeholder="Nome" class="input-prop" style="flex: 1">
+              <input id="categoria" type="text" placeholder="Categoria" class="input-prop" style="flex: 1">
+            </div>
+            <div style="display: flex; gap: 12px;" class="w-100">
+              <input id="modelo" type="text" placeholder="Modelo" class="input-prop" style="flex: 1">
+              <input id="fornecedor" type="text" placeholder="Fornecedor" class="input-prop" style="flex: 1">
+              <input id="preco" type="text" placeholder="Preço" class="input-prop" style="flex: 1">
+            </div>
+            <div class="w-100 mt-32" style="display: flex; justify-content: center;">  
+              <button style="padding: 12px; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
 

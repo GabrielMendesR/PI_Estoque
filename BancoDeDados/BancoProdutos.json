@@ -1,0 +1,11 @@
+[
+	{
+		"idProduto" : 01,
+		"nome" : "teste",
+		"categoria" : "teste",
+		"modelo" : "teste",
+		"fornecedor" : "teste",
+		"quantidade" : 2,
+		"data" : "11/01/2023"
+	}
+]
