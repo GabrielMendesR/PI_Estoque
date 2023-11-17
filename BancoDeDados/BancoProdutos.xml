@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<resultset statement=""
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<row>
+		<field name="idProduto">01</field>
+		<field name="nome">teste</field>
+		<field name="categoria">teste</field>
+		<field name="modelo">teste</field>
+		<field name="fornecedor">teste</field>
+		<field name="quantidade">2</field>
+		<field name="data">11/01/2023</field>
+	</row>
+</resultset>
