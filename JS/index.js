@@ -1,4 +1,10 @@
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   console.log("initialize")
+ 
+
+// });
+
 class Prod{
     constructor(nome, categ, forn, mod, prec) {
         this.nome = nome;
