@@ -23,14 +23,12 @@ export function createTable(nomeTabela) {
     if (err) {
       console.error('Error creating table:', err.message);
     } else {
-      // const response = `Table "${nomeTabela}" created successfully.`;
-      // return response
+      console.log("Tabela criada:", nomeTabela)
     }
   });
-  return `Table "${nomeTabela}" created successfully.`
+  return `Tabela "${nomeTabela}" criada com sucesso.`
 }
 
-// Function to insert a row
 export function insertRow(data) {
   const { nome, categoria, modelo, fornecedor, preco } = data;
   const sql = `
