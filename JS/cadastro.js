@@ -1,5 +1,20 @@
 
-const teste = require('./database')
+import { addBanco } from './database';
+
+
+
+
+class Something {
+    name = "Something Good";
+    constructor(element) {
+      // Note that the listeners in this case are `this`, not this.handleEvent
+      var el = document.getElementById("confirmButton");
+      el.addEventListener("click", addEstoque, false);
+      
+    }
+  }
+  
+  const s = new Something(document.body);
 
 class Prod{
     constructor(nome, categ, forn, mod, prec) {
@@ -21,7 +36,8 @@ function addEstoque() {
         console.log(produto);
 
     }
-    teste.addBanco()
+    console.log("AAAAAAAAAAA")
+    addBanco()
 }
 
 document.addEventListener('keypress', function(e) {
@@ -29,3 +45,5 @@ document.addEventListener('keypress', function(e) {
         addEstoque();
     }
 })
+
+export { addEstoque }
