@@ -1,10 +1,3 @@
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   console.log("initialize")
- 
-
-// });
-
 const sqlite3 = require("sqlite3").verbose();
 
 let sql
@@ -20,27 +13,40 @@ db.get(
     if (err) {
       console.error(err.message);
     } else {
+      const sql = `CREATE TABLE produtos (
+        id_produto INTEGER PRIMARY KEY,
+        nome TEXT,
+        categoria TEXT,
+        modelo TEXT,
+        fornecedor TEXT,
+        preco REAL
+      )`;
+
       if (row) {
         console.log('tabela "produtos" já existe, dropando tabela e criando novamente...');
-        db.run('DROP TABLE produtos')
+        db.run('DROP TABLE produtos', (dropErr) => {
+          if (dropErr) {
+            console.error(dropErr.message);
+          } else {
+            console.log('Tabela "produtos" dropada com sucesso.');
+            db.run(sql, (createErr) => {
+              if (createErr) {
+                console.error(createErr.message);
+              } else {
+                console.log('Nova tabela "produtos" criada');
+              }
+            });
+            return
+          }
+        })
+
       } else {
-        // Table does not exist, create it
-        const sql = `CREATE TABLE produtos (
-          id_produto INTEGER PRIMARY KEY,
-          nome TEXT,
-          categoria TEXT,
-          modelo TEXT,
-          fornecedor TEXT,
-          preco REAL,
-          quantidade INTEGER,
-          valor_total INTEGER
-        )`;
 
         db.run(sql, (createErr) => {
           if (createErr) {
             console.error(createErr.message);
           } else {
-            console.log('Table "produtos" created');
+            console.log('Tabela "produtos" criada');
           }
         });
       }
