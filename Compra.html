@@ -22,44 +22,33 @@
       <div style="background-color: #d9d9d9; height: 100%; width: 100%;">
         
         <div style="display: flex;">
-          <div style="background-color: #f0f0f0; padding: 12px;">
+          <div style="background-color: #747272; padding: 12px;  border: 0.5px solid white;">
+            <a href="Cadastro.html">CADASTRO</a>
+          </div>
+          <div style="background-color: #f0f0f0; padding: 12px;  border: 0.5px solid white;">
             <a style="color: black;" href="Compra.html">COMPRA</a>
           </div>
-          <div style="background-color: #747272;  padding: 12px;">
+          <div style="background-color: #747272;  padding: 12px;  border: 0.5px solid white;">
             <a href="Estoque.html">ESTOQUE</a>
           </div>
         </div>
+        
         <div class="cadastro">
-          <div style="display: flex; gap: 12px; width: 80%;">
-            <input type="text" placeholder="Categoria" class="input-prop" style="flex: 1">
-            <input type="text" placeholder="Nome" class="input-prop" style="flex: 1">
-            <input type="text" placeholder="Modelo" class="input-prop" style="flex: 1">
-          </div>
-          <div style="display: flex; gap: 12px; width: 80%;">
-            <input type="text" placeholder="ID Produto" class="input-prop" style="flex: 1">
-            <input type="text" placeholder="Quantidade" class="input-prop" style="flex: 1">
-
-          </div>
-          <div style="display: flex; gap: 12px; width: 80%">
-            <input type="text" placeholder="Fornecedor" class="input-prop" style="flex: 1">
-            <input type="text" placeholder="Preço" class="input-prop" style="flex: 1">
-            <input type="date" placeholder="Data" class="input-prop" style="flex: 1">
-          </div>
-
-            <div style="width: 80%; margin-top: 5%; display: flex; justify-content: space-between;">
-              
-                <button style="padding: 12px; background-color: rgb(131, 204, 131); margin-left: 5%;">Confirmar</button>
-             
-                
-                <h3 style="margin-right: 5%;">Preço Total: R$ 1231,00</h3>
-
-            </div>
+          <h1>Vendas</h1>
           
-        <div>
+          <select>
+            <option disabled selected>Selecione ID</option>
+          </select>
+          
+              <div class="w-100 mt-32" style="display: flex; justify-content:space-between">  
+                <button style="padding: 3% 6%; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
+                <h3 style="margin-right: 5%;">Preço Total: R$ 1231,00</h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
 
     <script src="JS/index.js"></script>
   </body>
