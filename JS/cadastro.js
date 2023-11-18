@@ -1,20 +1,4 @@
-
-import { addBanco } from './database';
-
-
-
-
-class Something {
-    name = "Something Good";
-    constructor(element) {
-      // Note that the listeners in this case are `this`, not this.handleEvent
-      var el = document.getElementById("confirmButton");
-      el.addEventListener("click", addEstoque, false);
-      
-    }
-  }
-  
-  const s = new Something(document.body);
+import { createTable } from './database.js';
 
 class Prod{
     constructor(nome, categ, forn, mod, prec) {
@@ -28,16 +12,26 @@ class Prod{
     };
 };
 
-function addEstoque() {
-    var prod = [document.getElementById('nome').value, document.getElementById('categoria').value, document.getElementById('fornecedor').value, document.getElementById('modelo').value, document.getElementById('preco').value];
-    if (prod[0] != '' && prod[1] != '' && prod[2] != '' && prod[3] != '' && (prod[4] != '')) {
-        //const produto = new Prod(prod[0], prod[1], prod[2], prod[3], parseFloat(prod[4]))            
-            
-        console.log(produto);
+const myButton = document.getElementById('confirmButton');
 
-    }
-    console.log("AAAAAAAAAAA")
-    addBanco()
+// Add a click event listener to the button, calling myFunction1 and myFunction2
+myButton.addEventListener('click', () => {
+  console.log("click")
+  createTable()
+
+  //addEstoque();
+});
+
+export function addEstoque() {
+  console.log("addEstoque")
+  var prod = [document.getElementById('nome').value, document.getElementById('categoria').value, document.getElementById('fornecedor').value, document.getElementById('modelo').value, document.getElementById('preco').value];
+  if (prod[0] != '' && prod[1] != '' && prod[2] != '' && prod[3] != '' && (prod[4] != '')) {
+    //const produto = new Prod(prod[0], prod[1], prod[2], prod[3], parseFloat(prod[4]))            
+          
+    console.log(produto);
+
+  }
+  //addBanco()
 }
 
 document.addEventListener('keypress', function(e) {
@@ -45,5 +39,3 @@ document.addEventListener('keypress', function(e) {
         addEstoque();
     }
 })
-
-export { addEstoque }
