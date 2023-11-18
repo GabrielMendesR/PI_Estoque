@@ -9,7 +9,7 @@ const sqlite3 = require("sqlite3").verbose();
 
 let sql
   
-const db = new sqlite3.Database("../database/estoque.db", sqlite3.OPEN_READWRITE, (err) => {
+const db = new sqlite3.Database("database/estoque.db", sqlite3.OPEN_READWRITE, (err) => {
   if(err) console.log(err.message)
 })
 
@@ -21,8 +21,8 @@ db.get(
       console.error(err.message);
     } else {
       if (row) {
-        console.log('Table "produtos" already exists');
-        // Table exists, perform actions accordingly
+        console.log('tabela "produtos" já existe, dropando tabela e criando novamente...');
+        db.run('DROP TABLE produtos')
       } else {
         // Table does not exist, create it
         const sql = `CREATE TABLE produtos (
@@ -50,29 +50,3 @@ db.get(
 
 
 
-class Prod{
-    constructor(nome, categ, forn, mod, prec) {
-        this.nome = nome;
-        this.categoria = categ;
-        this.fornecedor = forn;
-        this.quantidade = 0;
-        this.modelo = mod;
-        this.preco = prec;
-
-    };
-};
-
-function addEstoque() {
-    var prod = [document.getElementById('nome').value, document.getElementById('categoria').value, document.getElementById('fornecedor').value, document.getElementById('modelo').value, document.getElementById('preco').value];
-    if (prod[0] != '' && prod[1] != '' && prod[2] != '' && prod[3] != '' && (prod[4] != '')) {
-        const produto = new Prod(prod[0], prod[1], prod[2], prod[3], parseFloat(prod[4]))            
-            
-        console.log(produto);
-    }
-}
-
-document.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        addEstoque();
-    }
-})
