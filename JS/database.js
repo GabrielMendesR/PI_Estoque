@@ -7,9 +7,9 @@ import sqlite3 from 'sqlite3';
 const db = new sqlite3.Database(':memory:'); // Or specify a file name for a persistent database
 
 // Function to create a table
-export function createTable() {
+export function createTable(nomeTabela) {
   const sql = `
-    CREATE TABLE IF NOT EXISTS produtos (
+    CREATE TABLE IF NOT EXISTS ${nomeTabela} (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome TEXT,
       categoria TEXT,
@@ -23,9 +23,11 @@ export function createTable() {
     if (err) {
       console.error('Error creating table:', err.message);
     } else {
-      console.log('Table "produtos" created successfully.');
+      // const response = `Table "${nomeTabela}" created successfully.`;
+      // return response
     }
   });
+  return `Table "${nomeTabela}" created successfully.`
 }
 
 // Function to insert a row

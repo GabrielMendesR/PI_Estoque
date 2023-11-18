@@ -9,51 +9,28 @@ const db = new sqlite3.Database("database/estoque.db", sqlite3.OPEN_READWRITE, (
 })
 
 //database.createTable()
-createTable()
 
-// db.get(
-//   "SELECT name FROM sqlite_master WHERE type='table' AND name='produtos'",
-//   (err, row) => {
-//     if (err) {
-//       console.error(err.message);
-//     } else {
-//       const sql = `CREATE TABLE produtos (
-//         id_produto INTEGER PRIMARY KEY,
-//         nome TEXT,
-//         categoria TEXT,
-//         modelo TEXT,
-//         fornecedor TEXT,
-//         preco REAL
-//       )`;
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
-//       if (row) {
-//         console.log('tabela "produtos" já existe, dropando tabela e criando novamente...');
-//         db.run('DROP TABLE produtos', (dropErr) => {
-//           if (dropErr) {
-//             console.error(dropErr.message);
-//           } else {
-//             console.log('Tabela "produtos" dropada com sucesso.');
-//             db.run(sql, (createErr) => {
-//               if (createErr) {
-//                 console.error(createErr.message);
-//               } else {
-//                 console.log('Nova tabela "produtos" criada');
-//               }
-//             });
-//             return
-//           }
-//         })
+const app = express();
+app.use(cors());
+//app.use(bodyParser.json());
+app.use(express.json());
+// Handle POST request to /api/createTable
+app.post('/api/createTable', (req, res) => {
+    // Perform database operation to create table (using sqlite3, for example)
+    // Example:
+    // database.createTable(req.body)
+    //    .then(result => res.json(result))
+    //    .catch(err => res.status(500).json({ error: err.message }));
+    createTable(req.body.nomeTabela)
 
-//       } else {
+    res.json({ message: `Tabela ${req.body.nomeTabela} criada com sucesso` });
+});
 
-//         db.run(sql, (createErr) => {
-//           if (createErr) {
-//             console.error(createErr.message);
-//           } else {
-//             console.log('Tabela "produtos" criada');
-//           }
-//         });
-//       }
-//     }
-//   }
-// );
+// Start the server
+app.listen(3000, () => {
+    console.log('Server running on port 3000');
+});
