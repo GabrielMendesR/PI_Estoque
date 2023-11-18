@@ -1,4 +1,4 @@
-import { createTable, insertRow } from './JS/database.js';
+import { createTable, insertRow, getAllProducts } from './JS/database.js';
 import express from 'express';
 import cors from 'cors';
 
@@ -14,6 +14,17 @@ app.post('/api/createTable', (req, res) => {
 app.post('/api/new-product', (req, res) => {
   insertRow(req.body)
   res.json({ message: `` });
+});
+
+app.get('/api/get-all-products', (req, res) => {
+  getAllProducts()
+    .then(data => {
+      console.log("data:",data)
+      res.json({ data }); 
+    })
+    .catch(error => {
+      res.status(500).json({ error: error.message });
+    });
 });
 
 

@@ -2,6 +2,7 @@ import sqlite3 from 'sqlite3';
 import fs from 'fs-extra';
 
 const databaseFolder = './../sqlite3_database';
+let globalNomeTabela  = ''
 
 if (!fs.existsSync(databaseFolder)) {
   fs.mkdirSync(databaseFolder, { recursive: true }, (err) => {
@@ -14,11 +15,12 @@ if (!fs.existsSync(databaseFolder)) {
 }
 
 // Create a new SQLite3 database instance
-const db = new sqlite3.Database(databaseFolder + 'database.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
+const db = new sqlite3.Database(databaseFolder + '/database.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
   if(err) console.log(err.message)
 })
 // Function to create a table
 export function createTable(nomeTabela) {
+  globalNomeTabela = nomeTabela
   const sql = `
     CREATE TABLE IF NOT EXISTS ${nomeTabela} (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +28,8 @@ export function createTable(nomeTabela) {
       categoria TEXT,
       modelo TEXT,
       fornecedor TEXT,
-      preco REAL
+      preco REAL,
+      quantidade INTEGER
     )
   `;
 
@@ -44,11 +47,11 @@ export function insertRow(data) {
   
   const { nome, categoria, modelo, fornecedor, preco } = data;
   const sql = `
-    INSERT INTO produtos (nome, categoria, modelo, fornecedor, preco)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO produtos (nome, categoria, modelo, fornecedor, preco, quantidade)
+    VALUES (?, ?, ?, ?, ?, ?)
   `;
 
-  db.run(sql, [nome, categoria, modelo, fornecedor, preco], function(err) {
+  db.run(sql, [nome, categoria, modelo, fornecedor, preco, 0], function(err) {
     if (err) {
       console.error('Error inserting row:', err.message);
     } else {
@@ -77,5 +80,20 @@ export function closeDatabase() {
       return console.error(err.message);
     }
     console.log('Database connection closed.');
+  });
+}
+
+
+export function getAllProducts() {
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT * FROM ${globalNomeTabela}`;
+    db.all(sql, (err, rows) => {
+      if (err) {
+        console.error('Error retrieving data:', err.message);
+        reject(err);
+      } else {
+        resolve(rows); 
+      }
+    });
   });
 }
