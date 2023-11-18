@@ -50,3 +50,6 @@ db.get(
 
 
 
+module.exports = {
+  db
+}
