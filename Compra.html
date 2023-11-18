@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Compra</title>
+    <script src="JS/compra.js" type="module"></script>
   </head>
 
   <body>
@@ -16,11 +17,9 @@
             SISTEMA DE ESTOQUE
           </h3>
         </div>
-        
       </div>
       
       <div style="background-color: #d9d9d9; height: 100%; width: 100%;">
-        
         <div style="display: flex;">
           <div style="background-color: #747272; padding: 12px;  border: 0.5px solid white;">
             <a href="Cadastro.html">CADASTRO</a>
@@ -35,7 +34,6 @@
         
         <div class="cadastro">
           <h1>Vendas</h1>
-          
           <div>
             <select id="itens" class="itens">
               <option disabled selected>Selecione ID</option>
@@ -49,16 +47,12 @@
             <h3 class="precos">Preço Total: </h3>
           </div>
 
-
-              <div class="w-100 mt-32" style="display: flex; justify-content:space-around ">  
-                <button style="padding: 1% 2%; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
-              </div>
+            <div class="w-100 mt-32" style="display: flex; justify-content:space-around ">  
+              <button style="padding: 1% 2%; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
             </div>
           </div>
         </div>
       </div>
-
-
-    <script src="JS/compra.js"></script>
+    </div>
   </body>
 </html>
