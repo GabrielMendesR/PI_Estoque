@@ -1,7 +1,8 @@
 counter = 0;
 
-function comprar() {
-    
+function addCodigo() {
+    document.getElementById('itens').innerHTML += "<option value='" + counter + "'>#" + counter + "</option>";
+    ++counter
 };
 
-comprar()
+addCodigo()
