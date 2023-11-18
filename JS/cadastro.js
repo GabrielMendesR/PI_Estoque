@@ -32,42 +32,19 @@ export function addEstoque() {
 }
 
 document.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        addEstoque();
-    }
+  if (e.key === 'Enter') {
+    addEstoque();
+  }
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+ //
+});
+
+
 // Function to send a POST request to create a table
-function createTableRequest() {
-  const body = JSON.stringify(
-    { 
-      nomeTabela: document.getElementById('nome').value
-    }
-  )
-  fetch('http://localhost:3000/api/createTable', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json', // Specify content type if needed
-      },
-      body: body,
-  })
-  .then(response => {
-    console.log(body)
-      if (!response.ok) {
-          throw new Error('Ocorreu um erro ao consultar os dados');
-      }
-      return response.json(); // Parse response JSON if any
-  })
-  .then(data => {
-      console.log('Tabela criada:', data);
-  })
-  .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-  });
-}
 
 function insertProductRequest() {
-
 
   console.log("addEstoque")
   var prod = [
@@ -78,19 +55,16 @@ function insertProductRequest() {
     document.getElementById('preco').value
   ];
 
-  if (prod[0] == '' || prod[1] == '' || prod[2] == '' || prod[3] == '' || prod[4] == '') {
-  
-    return
-  }
+  if (prod[0] == '' || prod[1] == '' || prod[2] == '' || prod[3] == '' || prod[4] == '') return
 
   const produto = new Prod(prod[0], prod[1], prod[2], prod[3], parseFloat(prod[4]))            
   console.log(produto);
           
   const body = JSON.stringify(produto)
-  fetch('http://localhost:3000/api/insertProduct', {
+  fetch('http://localhost:3000/api/new-product', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json', // Specify content type if needed
+          'Content-Type': 'application/json',
       },
       body: body,
   })
@@ -102,7 +76,7 @@ function insertProductRequest() {
       return response.json(); // Parse response JSON if any
   })
   .then(data => {
-      console.log('Tabela criada:', data);
+      console.log('Novo produto inserido:', data);
   })
   .catch(error => {
       console.error('There was a problem with the fetch operation:', error);

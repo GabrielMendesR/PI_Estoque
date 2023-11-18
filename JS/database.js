@@ -1,11 +1,22 @@
 import sqlite3 from 'sqlite3';
-//const sqlite3 = require('sqlite3');
-//import sqlite3 from '../node_modules/sqlite3'
+import fs from 'fs-extra';
 
+const databaseFolder = './../sqlite3_database';
+
+if (!fs.existsSync(databaseFolder)) {
+  fs.mkdirSync(databaseFolder, { recursive: true }, (err) => {
+      if (err) {
+          console.error('Error creating folder:', err);
+      } else {
+          console.log('Folder created successfully.');
+      }
+  });
+}
 
 // Create a new SQLite3 database instance
-const db = new sqlite3.Database(':memory:'); // Or specify a file name for a persistent database
-
+const db = new sqlite3.Database(databaseFolder + 'database.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
+  if(err) console.log(err.message)
+})
 // Function to create a table
 export function createTable(nomeTabela) {
   const sql = `
@@ -30,6 +41,7 @@ export function createTable(nomeTabela) {
 }
 
 export function insertRow(data) {
+  
   const { nome, categoria, modelo, fornecedor, preco } = data;
   const sql = `
     INSERT INTO produtos (nome, categoria, modelo, fornecedor, preco)
