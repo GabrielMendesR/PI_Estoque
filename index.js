@@ -1,4 +1,4 @@
-import { createTable, insertRow, getAllProducts } from './JS/database.js';
+import { createTable, insertRow, getAllProducts } from './scr/utils/database.js';
 import express from 'express';
 import cors from 'cors';
 
