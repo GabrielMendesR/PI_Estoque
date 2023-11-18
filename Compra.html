@@ -36,12 +36,17 @@
         <div class="cadastro">
           <h1>Vendas</h1>
           
-          <select>
-            <option disabled selected>Selecione ID</option>
-          </select>
-          
-              <div class="w-100 mt-32" style="display: flex; justify-content:space-between">  
-                <button style="padding: 3% 6%; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
+          <div>
+            <select id="itens">
+              <option disabled selected>Selecione ID</option>
+            </select>
+
+            <input type="number" placeholder="Quantidade: ">
+          </div>
+
+
+              <div class="w-100 mt-32" style="display: flex; justify-content:space-around ">  
+                <button style="padding: 1% 2%; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
                 <h3 style="margin-right: 5%;">Preço Total: R$ 1231,00</h3>
               </div>
             </div>
@@ -50,6 +55,6 @@
       </div>
 
 
-    <script src="index.js"></script>
+    <script src="JS/compra.js"></script>
   </body>
 </html>
