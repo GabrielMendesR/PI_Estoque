@@ -1,4 +1,4 @@
-import { createTable, insertRow, getAllProducts } from './scr/utils/database.js';
+import { createTable, insertProduct, getAllProducts, insertMovimentation } from './scr/utils/database.js';
 import express from 'express';
 import cors from 'cors';
 
@@ -12,14 +12,18 @@ app.post('/api/createTable', (req, res) => {
 });
 
 app.post('/api/new-product', (req, res) => {
-  insertRow(req.body)
+  insertProduct(req.body)
+  res.json({ message: `` });
+});
+
+app.post('/api/movimentation', (req, res) => {
+  insertMovimentation(req.body)
   res.json({ message: `` });
 });
 
 app.get('/api/get-all-products', (req, res) => {
   getAllProducts()
     .then(data => {
-      console.log("data:",data)
       res.json({ data }); 
     })
     .catch(error => {
@@ -47,8 +51,8 @@ function createTableRequest() {
       }
       return response.json();
   })
-  .then(data => {
-      console.log('Tabela criada:', data);
+  .then(res => {
+      console.log(res);
   })
   .catch(error => {
       console.error('There was a problem with the fetch operation:', error);

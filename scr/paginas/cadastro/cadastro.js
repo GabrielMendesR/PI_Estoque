@@ -14,7 +14,6 @@ class Prod{
 
 const myButton = document.getElementById('confirmButton');
 
-// Add a click event listener to the button, calling myFunction1 and myFunction2
 myButton.addEventListener('click', () => {
   insertProductRequest()
 });
@@ -46,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function insertProductRequest() {
 
-  console.log("addEstoque")
   var prod = [
     document.getElementById('nome').value, 
     document.getElementById('categoria').value, 

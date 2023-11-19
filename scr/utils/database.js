@@ -2,6 +2,7 @@ import sqlite3 from 'sqlite3';
 import fs from 'fs-extra';
 
 const databaseFolder = './../sqlite3_database';
+const databaseLocation = `${databaseFolder}/database.db`
 let globalNomeTabela  = ''
 
 if (!fs.existsSync(databaseFolder)) {
@@ -15,7 +16,7 @@ if (!fs.existsSync(databaseFolder)) {
 }
 
 // Create a new SQLite3 database instance
-const db = new sqlite3.Database(databaseFolder + '/database.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
+const db = new sqlite3.Database(databaseLocation, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
   if(err) console.log(err.message)
 })
 // Function to create a table
@@ -43,7 +44,7 @@ export function createTable(nomeTabela) {
   return `Tabela "${nomeTabela}" criada com sucesso.`
 }
 
-export function insertRow(data) {
+export function insertProduct(data) {
   
   const { nome, categoria, modelo, fornecedor, preco } = data;
   const sql = `
@@ -58,6 +59,32 @@ export function insertRow(data) {
       console.log(`Row inserted with ID: ${this.lastID}`);
     }
   });
+}
+
+export function insertMovimentation(object) {
+
+  db.get('SELECT price FROM products WHERE id = ?', [object.idProduto], (err, row) => {
+    if (err) {
+      console.error('Error fetching product price:', err.message);
+      //db.close();
+    } else {
+      const productPrice = row.price;
+      const totalValue = productPrice * quantitySold;
+
+      const sql = `
+      INSERT INTO movimentacoes (id_produto, quantidade, valor_total)
+      VALUES (?, ?, ?)`;
+  
+      db.run(sql, [object.idProduto, object.quantidade, totalValue], function(err) {
+        if (err) {
+          console.error('Error recording sale:', err.message);
+        } else {
+          console.log(`Sale recorded for product ID ${object.idProduto} with quantity ${object.quantidade}`);
+        }
+      });
+
+    } 
+  })
 }
 
 // Function to remove a row by ID

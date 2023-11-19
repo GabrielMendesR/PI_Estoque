@@ -8,38 +8,17 @@
     <title>Compra</title>
     <script src="compra.js" type="module"></script>
   </head>
-
+  <div id="headerContainer"></div>
   <body>
     <div style="height: 100%;">
-      <div class="w-100 flex" style="background-color: #4A5565; color: white; justify-content: space-between;">
-        <div style="display: flex; align-items: center; justify-content: center; margin-left: 12px;">
-          <h3>
-            SISTEMA DE ESTOQUE
-          </h3>
-        </div>
-      </div>
-      
-      <div style="background-color: #d9d9d9; height: 100%; width: 100%;">
-        <div style="display: flex;">
-          <div style="background-color: #747272; padding: 12px;  border: 0.5px solid white;">
-            <a href="./../cadastro/Cadastro.html">CADASTRO</a>
-          </div>
-          <div style="background-color: #f0f0f0; padding: 12px;  border: 0.5px solid white;">
-            <a style="color: black;" href="./../compra/Compra.html">COMPRA</a>
-          </div>
-          <div style="background-color: #747272;  padding: 12px;  border: 0.5px solid white;">
-            <a href="./../estoque/Estoque.html">ESTOQUE</a>
-          </div>
-        </div>
-        
         <div class="cadastro">
           <h1>Vendas</h1>
           <div>
-            <select id="itens" class="itens">
+            <select id="id_produto" class="itens">
               <option disabled selected>Selecione ID</option>
             </select>
 
-            <input type="number" placeholder="Quantidade: " class="itens">
+            <input id="quantidade" type="number" placeholder="Quantidade: " class="itens">
           </div>
           
           <div style="width: 100%; text-align: center;">
@@ -48,7 +27,7 @@
           </div>
 
             <div class="w-100 mt-32" style="display: flex; justify-content:space-around ">  
-              <button style="padding: 1% 2%; background-color: rgb(131, 204, 131)" onclick="addEstoque()"><strong>Confirmar</strong></button>
+              <button id="confirmButton" style="padding: 1% 2%; background-color: rgb(131, 204, 131)"><strong>Confirmar</strong></button>
             </div>
           </div>
         </div>
