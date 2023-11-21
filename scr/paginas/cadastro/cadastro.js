@@ -1,15 +1,14 @@
-//import { createTable } from './database.js';
+import { loadHeader } from './../../shared/header.js'
 
 class Prod{
-    constructor(nome, categ, forn, mod, prec) {
-        this.nome = nome;
-        this.categoria = categ;
-        this.fornecedor = forn;
-        this.quantidade = 0;
-        this.modelo = mod;
-        this.preco = prec;
-
-    };
+  constructor(nome, categ, forn, mod, prec) {
+    this.nome = nome;
+    this.categoria = categ;
+    this.fornecedor = forn;
+    this.quantidade = 0;
+    this.modelo = mod;
+    this.preco = prec;
+  };
 };
 
 const myButton = document.getElementById('confirmButton');
