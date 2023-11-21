@@ -1,2 +1,2 @@
-import { loadHeader } from './../../shared/header.js'
+import { loadHeader } from '../../shared/header.js'
 
