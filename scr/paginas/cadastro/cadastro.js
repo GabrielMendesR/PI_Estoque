@@ -1,4 +1,4 @@
-//import { createTable } from './database.js';
+import { loadHeader } from './../../shared/header.js'
 
 class Prod{
     constructor(nome, categ, forn, mod, prec) {

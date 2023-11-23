@@ -9,6 +9,23 @@ div {
     box-sizing: border-box;
 }
 
+nav div {
+    background-color: #f0f0f0; 
+    padding: 12px;  
+    border: 0.5px solid white;
+    
+}
+
+nav a.active {
+    font-weight: bold;
+    color: black;
+}
+
+nav a.active ~ div {
+    font-weight: bold;
+    color: black;
+}
+
 .cadastro {
     background-color: #f0f0f0; 
     height: 100%; 
