@@ -1,4 +1,4 @@
-import { createTable, insertProduct, getAllProducts, insertMovimentation } from './scr/utils/database.js';
+import { createTable, insertProduct, getAllProducts, insertMovimentation, createMovimentationTable } from './scr/utils/database.js';
 import express from 'express';
 import cors from 'cors';
 
@@ -8,7 +8,8 @@ app.use(express.json());
 
 app.post('/api/createTable', (req, res) => {
     createTable(req.body.nomeTabela)
-    res.json({ message: `Tabela ${req.body.nomeTabela} criada com sucesso` });
+    createMovimentationTable()
+    res.json({ message: `Tabelas criadas com sucesso` })
 });
 
 app.post('/api/new-product', (req, res) => {

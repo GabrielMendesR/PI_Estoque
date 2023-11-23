@@ -44,6 +44,29 @@ export function createTable(nomeTabela) {
   return `Tabela "${nomeTabela}" criada com sucesso.`
 }
 
+export function createMovimentationTable() {
+
+  const sql = `
+    CREATE TABLE IF NOT EXISTS movimentacoes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id_produto INTEGER,
+      valor_total REAL,
+      quantidade INTEGER,
+      FOREIGN KEY (id_produto) REFERENCES produtos(id)
+    )
+  `;
+
+  db.run(sql, (err) => {
+    if (err) {
+      console.error('Error creating table:', err.message);
+    } else {
+      console.log("Tabela de movimentações criada!")
+    }
+  });
+  return `Tabela de movimentações criada com sucesso.`
+}
+
+
 export function insertProduct(data) {
   
   const { nome, categoria, modelo, fornecedor, preco } = data;
