@@ -86,28 +86,62 @@ export function insertProduct(data) {
 
 export function insertMovimentation(object) {
 
-  db.get('SELECT price FROM products WHERE id = ?', [object.idProduto], (err, row) => {
+  db.get('SELECT preco FROM produtos WHERE id = ?', [object.idProduto], (err, row) => {
     if (err) {
       console.error('Error fetching product price:', err.message);
       //db.close();
     } else {
-      const productPrice = row.price;
-      const totalValue = productPrice * quantitySold;
-
+      const productPrice = row.preco;
+      const totalValue = productPrice * object.quant;
+      console.log("OBJECT:",object)
+      const sinal = object.tipo == 'compra' ? 1 : -1
+      const quantidade = object.quant * sinal
+      console.log(sinal)
+      console.log(quantidade)
+      console.log(object, productPrice, totalValue)
       const sql = `
       INSERT INTO movimentacoes (id_produto, quantidade, valor_total)
       VALUES (?, ?, ?)`;
   
-      db.run(sql, [object.idProduto, object.quantidade, totalValue], function(err) {
+      db.run(sql, [object.idProduto, object.quant, totalValue], function(err) {
         if (err) {
-          console.error('Error recording sale:', err.message);
+          console.error('Erro:', err.message);
         } else {
-          console.log(`Sale recorded for product ID ${object.idProduto} with quantity ${object.quantidade}`);
+          console.log(`Compra registrada com produto de ID ${object.idProduto} quantidade: ${object.quant} valor total: ${totalValue}`);
         }
       });
 
+      decreaseProductQuantity(object.idProduto, quantidade)
     } 
   })
+}
+
+function decreaseProductQuantity(id_produto, quantidade) {
+  const sql = `
+  UPDATE produtos 
+    SET quantidade = quantidade + ? WHERE id = ?;`;
+
+  db.run(sql, [quantidade, id_produto], function(err) {
+    if (err) {
+      console.error('Erro:', err.message);
+    } else {
+      console.log(`Quantidade Atualizada`);
+    }
+  });
+}
+
+function increaseProductQuantity(id_produto, quantidade) {
+  const sql = `
+  UPDATE produtos 
+    SET quantidade = quantidade + ? WHERE id = ?;`;
+
+  db.run(sql, [quantidade, id_produto], function(err) {
+    if (err) {
+      console.error('Erro:', err.message);
+    } else {
+      console.log(`Quantidade Atualizada`);
+    }
+  });
 }
 
 // Function to remove a row by ID
@@ -137,6 +171,20 @@ export function closeDatabase() {
 export function getAllProducts() {
   return new Promise((resolve, reject) => {
     const sql = `SELECT * FROM ${globalNomeTabela}`;
+    db.all(sql, (err, rows) => {
+      if (err) {
+        console.error('Error retrieving data:', err.message);
+        reject(err);
+      } else {
+        resolve(rows); 
+      }
+    });
+  });
+}
+
+export function getAllMovimentations() {
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT * FROM movimentacoes`;
     db.all(sql, (err, rows) => {
       if (err) {
         console.error('Error retrieving data:', err.message);

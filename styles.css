@@ -5,6 +5,11 @@ html, body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.5); /* Increase the radio button size */
+  }
+
 div {
     box-sizing: border-box;
 }
@@ -88,6 +93,11 @@ a {
     display: inline-block;
     width: 19%;
     color: rgb(0, 0, 0);
+}
+
+td, th{
+    text-align: center;
+    padding: 12px;
 }
 
 .estoque h4 {

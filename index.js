@@ -1,4 +1,4 @@
-import { createTable, insertProduct, getAllProducts, insertMovimentation, createMovimentationTable } from './scr/utils/database.js';
+import { createTable, insertProduct, getAllProducts, insertMovimentation, createMovimentationTable, getAllMovimentations } from './scr/utils/database.js';
 import express from 'express';
 import cors from 'cors';
 
@@ -24,6 +24,16 @@ app.post('/api/movimentation', (req, res) => {
 
 app.get('/api/get-all-products', (req, res) => {
   getAllProducts()
+    .then(data => {
+      res.json({ data }); 
+    })
+    .catch(error => {
+      res.status(500).json({ error: error.message });
+    });
+});
+
+app.get('/api/get-all-movimentations', (req, res) => {
+  getAllMovimentations()
     .then(data => {
       res.json({ data }); 
     })

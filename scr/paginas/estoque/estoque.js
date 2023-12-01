@@ -32,7 +32,6 @@ function popularTabela(data) {
   data.forEach(product => {
     const row = document.createElement('tr');
 
-    // Create table cells for each property of the product
     const idCell = document.createElement('td');
     idCell.textContent = product.id;
     row.appendChild(idCell);

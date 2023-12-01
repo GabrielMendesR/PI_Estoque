@@ -1,9 +1,10 @@
 import { loadHeader } from './../../shared/header.js'
 
 class Mov{
-  constructor(id, quant) {
+  constructor(id, quant, tipo) {
     this.idProduto = id;
     this.quant = quant;
+    this.tipo = tipo
   };
 };
 
@@ -14,20 +15,34 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 });
 
+let tipoTransacao = ''
+
 const botaoConfirmar = document.getElementById('confirmButton');
 
 botaoConfirmar.addEventListener('click', () => {
+  console.log("tipo:",tipoTransacao)
   var mov = [
     document.getElementById('id_produto').value, 
-    document.getElementById('quantidade').value, 
+    parseInt(document.getElementById('quantidade').value),
+    tipoTransacao
   ];
 
   if (mov[0] == '' || mov[1] == '') return
 
-  const movimentacao = new Mov(mov[0], parseFloat(mov[1]))            
-  console.log(movimentacao);
-          
+  const movimentacao = new Mov(mov[0], parseFloat(mov[1]), mov[2])            
   addMovimentation(movimentacao)
+});
+
+
+const botaoTipoTransacao = document.querySelector('input[name="transactionType"][checked]');
+botaoTipoTransacao.checked = true;
+const radioButtons = document.querySelectorAll('input[name="transactionType"]');
+
+radioButtons.forEach(function (radioButton) {
+  radioButton.addEventListener('change', function () {
+    tipoTransacao = radioButton.value
+    console.log("change:",tipoTransacao)
+  });
 });
 
 function fillOptions(data) {
