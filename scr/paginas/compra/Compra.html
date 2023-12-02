@@ -12,26 +12,23 @@
   <body>
     <div style="height: 100%;">
         <div class="cadastro">
-          <h1>Vendas</h1>
+          <h1 class="titulo">Compra | Venda</h1>
+
           <div>
             <select id="id_produto" class="itens">
               <option disabled selected>Selecione ID</option>
             </select>
-            <input id="quantidade" type="number" placeholder="Quantidade: " class="itens">
+            <input id="quantidade" type="number" placeholder="Quantidade " class="itens">
           </div>
-          <div style="width: 100%; text-align: center;">
-            <h3 class="precos">Preço Individual: </h3>
-            <h3 class="precos">Preço Total: </h3>
-          </div>
-            <div class="w-100 mt-32" style="display: flex; justify-content:space-around ">  
-              <button id="confirmButton" style="padding: 1% 2%; background-color: rgb(131, 204, 131)"><strong>Confirmar</strong></button>
+          
+            <div>  
+              <button id="confirmButton"><strong>Confirmar</strong></button>
             </div>
             <form>
               <label>
                 <input type="radio" name="transactionType" value="compra" checked>
                 Compra
               </label>
-          <br><br>
               <label>
                 <input type="radio" name="transactionType" value="venda">
                 Venda
